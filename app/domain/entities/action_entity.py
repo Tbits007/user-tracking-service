@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 
 @dataclass(slots=True)
-class ActivityDM:
+class ActionDM:
     _id: str | None = None
     email: str
     action_type: str
