@@ -3,10 +3,13 @@ from app.application.interactors.action_interactors import CreateActionInteracto
 from app.infrastructure.broker import new_broker
 from dishka.integrations.base import FromDishka
 
+from app.main.config import Config
 from app.presentation.controllers.schemas import ActionSchema 
 
 
-actions = new_broker()
+actions = new_broker(
+    kafka_config=Config().kafka,
+)
 
 
 @actions.subscriber("user-service-actions")

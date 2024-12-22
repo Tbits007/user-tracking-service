@@ -1,3 +1,4 @@
+import dataclasses
 import motor.motor_asyncio
 from bson import ObjectId
 from app.application.interfaces.action_interface import (
@@ -19,10 +20,12 @@ class ActionGateway(
 
     async def save(self, action: ActionDM) -> ActionDM | None:
         """Save action to the database."""
-        action_dict = action.dict()
+        action_dict = dataclasses.asdict(action)
+        if "_id" in action_dict and action_dict["_id"] is None:
+            del action_dict["_id"]
         result = await self.collection.insert_one(action_dict)
         if result.inserted_id:
-            action.id = str(result.inserted_id)
+            action._id = str(result.inserted_id)
             return action
         return None
 
