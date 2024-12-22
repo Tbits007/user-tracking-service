@@ -1,15 +1,15 @@
 from app.application.dtos.action_dtos import CreateActionDTO
 from app.application.interactors.action_interactors import CreateActionInteractor
-from app.infrastructure.database.broker import new_broker
+from app.infrastructure.broker import new_broker
 from dishka.integrations.base import FromDishka
 
 from app.presentation.controllers.schemas import ActionSchema 
 
 
-broker = new_broker()
+actions = new_broker()
 
 
-@broker.subscriber("user-service-actions")
+@actions.subscriber("user-service-actions")
 async def handle_user_actions(
     data: ActionSchema,
     interactor: FromDishka[CreateActionInteractor]

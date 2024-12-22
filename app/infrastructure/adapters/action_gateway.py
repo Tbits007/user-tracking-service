@@ -13,12 +13,8 @@ class ActionGateway(
 ):
     def __init__(
             self,
-            client: motor.motor_asyncio.AsyncIOMotorClient,
-            db: motor.motor_asyncio.AsyncIOMotorDatabase,
             collection: motor.motor_asyncio.AsyncIOMotorCollection,
         ) -> None:
-        self.client = client
-        self.db = db
         self.collection = collection
 
     async def save(self, action: ActionDM) -> ActionDM | None:

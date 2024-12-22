@@ -4,11 +4,9 @@ from pydantic import BaseModel, Field
 
 
 class MongoDBConfig(BaseModel):
-    username: str = Field(alias="MONGODB_USERNAME")
-    password: int = Field(alias="MONGODB_PASSWORD")
-
-    def uri(self):
-        return f"mongodb+srv://{self.username}:{self.password}@cluster0.ofbf3.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+    uri: str = Field(alias="MONGODB_URI")
+    db_name: str = Field(alias="MONGODB_DB_NAME")
+    collection_name: str = Field(alias="MONGODB_COLLECTION_NAME")
 
 
 class KafkaConfig(BaseModel):
