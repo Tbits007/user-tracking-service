@@ -27,15 +27,15 @@ services:
         depends_on:
             - zookeeper
 
-    user-actions:
+    tracking-service:
         build:
-            context: ./src
+            context: .
             dockerfile: Dockerfile
         command: faststream run --factory app.main.run:create_app
         ports:
             - 8080:8000
         volumes:
-            - ./src/app:/usr/src/app
+            - ./app:/usr/src/app
         environment:
             - KAFKA_HOST=kafka
             - KAFKA_PORT=9092
