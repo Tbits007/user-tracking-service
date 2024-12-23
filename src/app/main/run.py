@@ -7,8 +7,8 @@ from app.main.ioc.providers.root import RootProvider
 from app.main.ioc.providers.action import ActionProvider
 from app.presentation.controllers.handlers import actions
 
-# $env:PYTHONPATH="C:\\PythonProjects\\FastAPIprojects\\user-service\\src"
-# faststream run app.main.run:create_app
+# $env:PYTHONPATH="C:\\PythonProjects\\FastAPIprojects\\tracking-service\\src"
+# faststream run --factory app.main.run:create_app
 
 def create_app() -> FastStream:
     config = Config()   
